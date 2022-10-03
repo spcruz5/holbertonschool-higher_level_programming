@@ -91,4 +91,4 @@ class Rectangle():
         def __del__(self):
                 """ delete function"""
                 print("Bye rectangle...")
-                Rectangle.number_of_instances -= 
+                Rectangle.number_of_instances -= 1
