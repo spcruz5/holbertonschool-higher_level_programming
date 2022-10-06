@@ -101,7 +101,7 @@ class Rectangle(Base):
                 aux2 = " - {}/{}".format(self.__width, self.__height)
                 return aux + aux2
 
-def update(self, *args, **kwargs):
+        def update(self, *args, **kwargs):
                 """ update method"""
                 arguments = ["id", "width", "height", "x", "y"]
                 if args:
@@ -111,3 +111,8 @@ def update(self, *args, **kwargs):
                         for i, ii in kwargs.items():
                                 if hasattr(self, i):
                                         setattr(self, i, ii)
+
+        def to_dictionary(self):
+                """ dictionary representation method"""
+                return {'id': self.id, 'width': self.__width,
+                        'height': self.__height, 'x': self.__x, 'y': self.__y}
