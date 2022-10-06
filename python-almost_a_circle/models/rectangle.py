@@ -28,7 +28,7 @@ class Rectangle(Base):
                         private attribute height
                 """
                 return self.__height
-                      
+
         @property
         def x(self):
                 """ getter method of x"""
@@ -74,7 +74,7 @@ class Rectangle(Base):
                 if value < 0:
                         raise ValueError("y must be >= 0")
                 self.__y = value
- 
+
         def area(self):
                 """ return the area of the rectangle"""
                 return self.__height * self.__width
@@ -100,3 +100,14 @@ class Rectangle(Base):
                 aux = "[Rectangle] ({}) {}/{}".format(id, self.__x, self.__y)
                 aux2 = " - {}/{}".format(self.__width, self.__height)
                 return aux + aux2
+
+def update(self, *args, **kwargs):
+                """ update method"""
+                arguments = ["id", "width", "height", "x", "y"]
+                if args:
+                        for i in range(len(args)):
+                                setattr(self, arguments[i], args[i])
+                else:
+                        for i, ii in kwargs.items():
+                                if hasattr(self, i):
+                                        setattr(self, i, ii)
