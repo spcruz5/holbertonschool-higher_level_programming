@@ -1,30 +1,20 @@
 #!/usr/bin/python3
-'''Define get function'''
+"""Lists all states from the database hbtn_0e_0_usa"""
+
+from sys import argv
 import MySQLdb
 
-
-def main():
-    # 3 arguments take in
-    # make a connection
-    db = MySQLdb.connect(host='localhost',
-                         port=3306,
-                         user=argv[1],
-                         passwd=argv[2],
-                         database=argv[3])
-
-    # create a cursor
-    c = db.cursor()
-
-    # execute query
-    c.execute('SELECT * FROM states ORDER BY id ASC')
-    rows = c.fetchall()
-    for i in rows:
-        print(i)
-
-    # close all cursor and database
-    c.close()
-    db.close()
-
 if __name__ == "__main__":
-    from sys import argv
-    main()
+
+    MY_USER = argv[1]
+    MY_PASS = argv[2]
+    MY_DB = argv[3]
+
+    db = MySQLdb.connect(host='localhost',  user=MY_USER, passwd=MY_PASS, db=MY_DB, port=3306)
+    cur = db.cursor()
+    cur.execute('SELECT * FROM states ORDER BY id ASC')
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+    cur.close()
+    db.close()
