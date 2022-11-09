@@ -1,16 +1,32 @@
 #!/usr/bin/python3
-""" ex 0 """
+""" lists all states from the database hbtn_0e_0_usa"""
+
+import MySQLdb
+import sys
+
 if __name__ == "__main__":
-    import sys
-    import MySQLdb
-    av = sys.argv
+    argv = sys.argv
+    username = argv[1]
+    password = argv[2]
+    database_name = argv[3]
+
+    """ connection to a db """
     db = MySQLdb.connect(
-            host="localhost", port=3306,
-            user=av[1], passwd=av[2], db=av[3])
+        host="localhost",
+        user=username,
+        passwd=password,
+        db=database_name,
+        port=3306
+    )
+
+    """ Nos da la capacidad de tener múltiples entornos de trabajo """
     cur = db.cursor()
+
+    """ execute to execte a query """
     cur.execute("SELECT * FROM states ORDER BY id ASC")
+
+    """ tuple wiat all rows """
     rows = cur.fetchall()
+
     for row in rows:
         print(row)
-    cur.close()
-    db.close()
