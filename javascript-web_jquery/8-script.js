@@ -1,3 +1,5 @@
-$.get('https://swapi.co/api/films/?format=json', data =>
-  data.results.forEach(film =>
-    $('UL#list_movies').append(`<li>${film.title}</li>`)));
+$.get('https://swapi-api.hbtn.io/api/films/?format=json', (data) => {
+    for (const result of data.results) {
+      $('UL#list_movies').append('<li>' + result.title + '</li>');
+    }
+  });
